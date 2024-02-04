@@ -4,10 +4,13 @@ on:
   workflow_run:
     workflows: [Dependabot Review]
     types: [completed]
+    
   push:
     branches: [test-workflows]
     paths:
       - ".github/workflows/dependa-merge.yml"
+      
+  workflow_dispatch:
     
 permissions:
   contents: write
