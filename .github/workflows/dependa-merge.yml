@@ -7,7 +7,7 @@ on:
     branches: [security-updates]
   
   push:
-    branches: [test-workflow]
+    branches: [test-workflows]
 
 permissions:
   contents: write
