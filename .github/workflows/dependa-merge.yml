@@ -4,7 +4,6 @@ on:
   workflow_run:
     workflows: [Dependabot Review]
     types: [completed]
-    branches: [security-updates]
 
 permissions:
   contents: write
@@ -18,14 +17,16 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
         with:
-          ref: security-updates
+          ref: ${{ github.event.workflow_run.head_branch }}
       - name: Debug
         run: |
           echo "$GITHUB_ACTOR"
-          echo "PULL_REQUEST_URL"
+          echo "$PULL_REQUEST_URL"
+          echo "$HEAD_BRANCH"
         env:
           GITHUB_ACTOR: ${{ github.actor }}
           PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
+          HEAD_BRANCH: ${{ github.event.workflow_run.head_branch }}
       - name: Enable auto-merge for Dependabot PRs
         # run: gh pr merge --auto --squash "$PR_URL"
         # env:
