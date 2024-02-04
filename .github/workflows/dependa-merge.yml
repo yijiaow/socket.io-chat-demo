@@ -2,7 +2,7 @@ name: Dependabot Review & Merge
 
 on:
   workflow_run:
-    workflows: [Dependabot Review]
+    workflows: ["Dependabot Review"]
     types: [completed]
     branches: [security-updates]
   
