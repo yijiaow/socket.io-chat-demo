@@ -5,6 +5,9 @@ on:
     workflows: [Dependabot Review]
     types: [completed]
     branches: [security-updates]
+  
+  push:
+    branches: [test-workflow]
 
 permissions:
   contents: write
