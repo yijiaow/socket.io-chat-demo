@@ -4,7 +4,7 @@ on:
   workflow_run:
     workflows: ["Dependabot Review"]
     types: [completed]
-    branches: [security-updates]
+    # branches: [security-updates]
   
   push:
     branches: [test-workflows]
