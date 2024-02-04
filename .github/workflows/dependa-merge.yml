@@ -6,6 +6,8 @@ on:
     types: [completed]
   push:
     branches: [test-workflows]
+    paths:
+      - ".github/workflows/dependa-merge.yml"
     
 permissions:
   contents: write
