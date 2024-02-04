@@ -4,9 +4,11 @@ on:
   workflow_run:
     workflows: [Dependabot Review]
     types: [completed]
+    branches: [security-updates]
 
 permissions:
   contents: write
+  pull-requests: write
 
 jobs:
   merge-pr:
@@ -18,9 +20,12 @@ jobs:
         with:
           ref: security-updates
       - name: Debug
-        run: echo "$GITHUB_ACTOR"
+        run: |
+          echo "$GITHUB_ACTOR"
+          echo "PULL_REQUEST_URL"
         env:
           GITHUB_ACTOR: ${{ github.actor }}
+          PULL_REQUEST_URL: ${{ github.event.pull_request.html_url }}
       - name: Enable auto-merge for Dependabot PRs
         # run: gh pr merge --auto --squash "$PR_URL"
         # env:
@@ -28,5 +33,5 @@ jobs:
         #   GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
         run: gh pr merge --auto --squash "$PR_URL"
         env:
-          PR_URL: ${{ github.event.workflow_run.pull_requests[0].number }}
+          PR_URL: ${{ github.event.workflow_run.pull_requests[0].html_url }}
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
