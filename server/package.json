@@ -36,7 +36,7 @@
     "@types/socket.io": "^3.0.2",
     "jest": "^30.2.0",
     "nodemon": "^3.1.11",
-    "socket.io-client": "^4.8.1",
+    "socket.io-client": "^4.8.2",
     "ts-jest": "^29.4.6",
     "ts-node-dev": "^2.0.0",
     "typescript": "^5.9.3"
